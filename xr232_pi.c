@@ -63,6 +63,7 @@ int main(int argc, char **argv)
   char buffer[BLOCKLEN];
   int x;
   unsigned long y=0;
+  int num = atoi(argv[1]);
 
   int port = open ("/dev/ttyUSB0", O_RDWR | O_NOCTTY);
   if (port == -1)
@@ -97,7 +98,7 @@ int main(int argc, char **argv)
     printf("bytes = %i ; y = %i mb\n", bytes, y/1000000);
 
   fwrite(&buffer, bytes, 1, zfz_datei);
-  if(y >= 1024*1024*1024*1024)
+  if(y >= 1024*1024* num)
   break;
   }
   printf("...");
